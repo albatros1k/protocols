@@ -13,23 +13,22 @@ export const Frax = () => {
   const walletAddress = "0x67e218a6d51ee4ae365199e35fe9cae005d40da2";
   const veFXS = "0xc8418aF6358FFddA74e09Ca9CC3Fe03Ca6aDC5b0";
 
-  const getInfo = async () => {
-    const fraxInstance = new web3.eth.Contract(fraxAbi, veFXS);
-    const decimals = await fraxInstance.methods.decimals().call();
-    const locked = await fraxInstance.methods.locked(walletAddress).call();
-    const symbol = await fraxInstance.methods.symbol().call();
-
-    const { end, amount } = locked || {};
-
-    const date = moment.unix(end).format("YYYY/MM/DD HH:mm");
-    const balance = amount / Math.pow(10, +decimals);
-
-    setFrax({ symbol, date, balance });
-  };
-
   useEffect(() => {
+    const getInfo = async () => {
+      const fraxInstance = new web3.eth.Contract(fraxAbi, veFXS);
+      const decimals = await fraxInstance.methods.decimals().call();
+      const locked = await fraxInstance.methods.locked(walletAddress).call();
+      const symbol = await fraxInstance.methods.symbol().call();
+
+      const { end, amount } = locked || {};
+
+      const date = moment.unix(end).format("YYYY/MM/DD HH:mm");
+      const balance = amount / Math.pow(10, +decimals);
+
+      setFrax({ symbol, date, balance });
+    };
     getInfo();
-  }, []);
+  }, [web3.eth.Contract]);
 
   if (!frax) return <>Loading...</>;
   else {
