@@ -6,6 +6,7 @@ import { Shiba } from "components/protocols/Shiba";
 import { createContext } from "react";
 import { Frax } from "./components/protocols/Frax";
 import { Column, Row } from "./styled";
+import { Arrakis } from "components/protocols/arrakis";
 
 const web3 = window.ethereum ? new Web3(window.ethereum) : null;
 
@@ -19,6 +20,7 @@ function App() {
           <Frax />
           <OneInch />
           <Shiba />
+          <Arrakis />
         </Column>
         <Column>
           <h3>Lendings</h3>
