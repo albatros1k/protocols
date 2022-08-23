@@ -7,6 +7,7 @@ import { createContext } from "react";
 import { Frax } from "./components/protocols/Frax";
 import { Column, Row } from "./styled";
 import { Arrakis } from "components/protocols/arrakis";
+import { Yearn } from "components/protocols/yearn";
 
 const web3 = window.ethereum ? new Web3(window.ethereum) : null;
 
@@ -23,8 +24,8 @@ function App() {
           <Arrakis />
         </Column>
         <Column>
-          <h3>Lendings</h3>
           <IronBank />
+          <Yearn />
         </Column>
       </Row>
     </Web3Context.Provider>
