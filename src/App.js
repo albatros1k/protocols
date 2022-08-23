@@ -10,7 +10,11 @@ import { Arrakis } from "components/protocols/arrakis";
 import { Yearn } from "components/protocols/yearn";
 import { Liquity } from "components/protocols/liquity";
 
-const web3 = window.ethereum ? new Web3(window.ethereum) : null;
+// connect to public RPC URL
+const url = "https://rpc.ankr.com/eth";
+
+// set the provider
+const web3 = window.ethereum ? new Web3(new Web3.providers.HttpProvider(url)) : null;
 
 export const Web3Context = createContext(null);
 
