@@ -8,6 +8,7 @@ import { Frax } from "./components/protocols/Frax";
 import { Column, Row } from "./styled";
 import { Arrakis } from "components/protocols/arrakis";
 import { Yearn } from "components/protocols/yearn";
+import { Liquity } from "components/protocols/liquity";
 
 const web3 = window.ethereum ? new Web3(window.ethereum) : null;
 
@@ -26,6 +27,7 @@ function App() {
         <Column>
           <IronBank />
           <Yearn />
+          <Liquity />
         </Column>
       </Row>
     </Web3Context.Provider>
